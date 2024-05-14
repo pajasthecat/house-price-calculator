@@ -1,3 +1,25 @@
+const formatInput = (id) => {
+  const input = document.getElementById(id);
+  if (!input?.value) return;
+  input.value = formatAndRoundCurrency(input.value);
+};
+
+document
+  .getElementById("price")
+  .addEventListener("focusout", formatInput.bind(null, "price"));
+
+document
+  .getElementById("rent")
+  .addEventListener("focusout", formatInput.bind(null, "rent"));
+
+document
+  .getElementById("maintenance")
+  .addEventListener("focusout", formatInput.bind(null, "maintenance"));
+
+document
+  .getElementById("income")
+  .addEventListener("focusout", formatInput.bind(null, "income"));
+
 document.getElementById("form").addEventListener("submit", (event) => {
   event.preventDefault();
 
@@ -173,9 +195,14 @@ const getAmortizationPerYear = (
 const getLoanAsQuotaOfYearlyIncome = (borrowedSum, income) =>
   round(borrowedSum / (income * 12));
 
-export const round = (number) => Math.round(number * 100) / 100;
+const round = (number) => Math.round(number * 100) / 100;
 
-export const formatAndRoundCurrency = (price) => {
+const formatAndRoundCurrency = (price) => {
+  if (typeof price === "string") {
+    const toInt = Number(price.replace(/[^0-9\.]+/g, ""));
+    const roundedPrice = round(toInt);
+    return new Intl.NumberFormat("en-US").format(roundedPrice);
+  }
   const roundedPrice = round(price);
   return new Intl.NumberFormat("en-US").format(roundedPrice);
 };
