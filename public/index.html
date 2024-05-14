@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="./images/home.png" />
+    <link rel="stylesheet" href="./style/index.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <title>Räkna på bostadsfinansiering</title>
+  </head>
+  <body>
+    <div class="mainContainer">
+      <h1>Bo-Räknare</h1>
+
+      <form id="form">
+        <div class="inputContainer">
+          <div>
+            <label for="price">Bostadspris</label>
+            <input type="text" name="price" id="price" />
+          </div>
+          <div>
+            <label for="rent">Hyra</label>
+            <input type="text" name="rent" id="rent" />
+          </div>
+          <div>
+            <label for="maintenance">Underhållskostnad</label>
+            <input type="text" name="maintenance" id="maintenance" />
+          </div>
+          <div>
+            <label for="income">Hushållets måntaliga bruttoinkomst</label>
+            <input type="text" name="income" id="income" />
+          </div>
+          <div>
+            <label for="interets">Ränta</label>
+            <select id="interets" name="interets">
+              <option value="1">1 %</option>
+              <option value="2">2 %</option>
+              <option value="3">3 %</option>
+              <option value="4">4 %</option>
+              <option value="5">5 %</option>
+              <option value="6">6 %</option>
+              <option value="7">7 %</option>
+              <option value="8">8 %</option>
+              <option value="9">9 %</option>
+              <option value="10">10 %</option>
+            </select>
+          </div>
+          <div>
+            <label for="downPayment">Handpenning</label>
+            <select id="downPayment" name="downPayment">
+              <option value="15">15 %</option>
+              <option value="20">20 %</option>
+              <option value="25">25 %</option>
+              <option value="30">30 %</option>
+              <option value="35">35 %</option>
+              <option value="40">40 %</option>
+              <option value="45">45 %</option>
+              <option value="50">50 %</option>
+            </select>
+          </div>
+          <input type="submit" class="button" value="Submit" />
+        </div>
+      </form>
+      <h2>Lån</h2>
+      <table>
+        <tr>
+          <th>Belånat belopp</th>
+          <td id="borrowedSum">0 kr</td>
+        </tr>
+        <tr>
+          <th>Handpenning</th>
+          <td id="paidDownPayment">0 kr</td>
+        </tr>
+        <tr>
+          <th>Belånat belopp som funktion av årsinkomst</th>
+          <td id="loanAsQuotaOfYearlyIncome">0</td>
+        </tr>
+        <tr>
+          <th>% att amotera per år</th>
+          <td id="amortizationPerYear">0%</td>
+        </tr>
+      </table>
+
+      <h2>Månatliga kostnader</h2>
+      <table>
+        <tr>
+          <th>Amortering</th>
+          <td id="amortizationPerMonth">0 kr</td>
+        </tr>
+        <tr>
+          <th>Räntebetalning</th>
+          <td id="interestPerMonth">0 kr</td>
+        </tr>
+        <tr>
+          <th>Hyra</th>
+          <td id="rentPerMonth">0 kr</td>
+        </tr>
+        <tr>
+          <th><b>Total kostnad per månad</b></th>
+          <td id="totalPerMonth"><b>0 kr</b></td>
+        </tr>
+        <tr>
+          <th><b>Total kostnad per månad ex ränteavdrag</b></th>
+          <td id="totalPerMonthExDeduction"><b>0 kr</b></td>
+        </tr>
+        <tr>
+          <th>Kostnad som andel av nettoinkomst</th>
+          <td id="costAsShareOfIncome">0%</td>
+        </tr>
+        <tr>
+          <th>Räntekostnad som andel av inkomst</th>
+          <td id="interestAsShareOfIncome">0%</td>
+        </tr>
+      </table>
+    </div>
+    <footer>
+      <div class="footerContainer">
+        <div class="footerImageContainer">
+          <a href="mailto: henrik.forsberg1990@gmail.com">
+            <img src="images\email.png" alt="email icon"
+          /></a>
+          <a
+            href="https://github.com/pajasthecat/real-income-presentor"
+            ,
+            target="_blank"
+          >
+            <img src="images\github.png" alt="github icon" />
+          </a>
+        </div>
+        <div class="footerTextContainer">
+          <div></div>
+          <p>No tracking. No cookies. No visit logs.</p>
+          <div></div>
+        </div>
+
+        <div class="footerTextContainer">
+          <div></div>
+          <p>©2024 Henrik Forsberg.</p>
+          <div></div>
+        </div>
+      </div>
+    </footer>
+    <script type="module" src="./scripts/index.mjs"></script>
+  </body>
+</html>
