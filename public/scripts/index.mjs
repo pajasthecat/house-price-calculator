@@ -50,7 +50,7 @@ const getInput = () => {
   };
 };
 
-const parseAndSetDefault = (text) => (text ? parseInt(text) : 0);
+const parseAndSetDefault = (text) => (text ? parseIntFromCurrency(text) : 0);
 
 const setLoanTable = (output) => {
   const {
@@ -206,3 +206,5 @@ const formatAndRoundCurrency = (price) => {
   const roundedPrice = round(price);
   return new Intl.NumberFormat("en-US").format(roundedPrice);
 };
+
+const parseIntFromCurrency = (price) => Number(price.replace(/[^0-9\.]+/g, ""));
