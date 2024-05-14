@@ -19,14 +19,16 @@ const getInput = () => {
   const maintenance = document.getElementById("maintenance").value;
 
   return {
-    price: parseInt(price),
-    rent: parseInt(rent),
-    income: parseInt(income),
-    interest: parseInt(interest),
-    downPayment: parseInt(downPayment),
-    maintenance: parseInt(maintenance),
+    price: parseAndSetDefault(price),
+    rent: parseAndSetDefault(rent),
+    income: parseAndSetDefault(income),
+    interest: parseAndSetDefault(interest),
+    downPayment: parseAndSetDefault(downPayment),
+    maintenance: parseAndSetDefault(maintenance),
   };
 };
+
+const parseAndSetDefault = (text) => (text ? parseInt(text) : 0);
 
 const setLoanTable = (output) => {
   const {
