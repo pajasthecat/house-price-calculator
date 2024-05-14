@@ -1,6 +1,8 @@
 body {
   font-family: "Poppins", sans-serif;
   font-size: 14px;
+  margin: auto;
+  width: 30%;
 }
 
 p {
@@ -10,27 +12,23 @@ p {
   line-height: 1.9;
 }
 
+h1,
+h2 {
+  text-align: center;
+}
+
 table {
   text-align: left;
+  margin: auto;
 }
 
 td,
 th {
   border: 1px solid #dddddd;
-  text-align: center;
   padding: 8px;
   font-weight: 300;
   font-style: normal;
   font-size: small;
-}
-
-.mainContainer {
-  display: flex;
-  flex-direction: column;
-  margin: auto;
-  width: 50%;
-  align-items: center;
-  gap: 10px;
 }
 
 .inputContainer {
@@ -38,8 +36,11 @@ th {
   flex-direction: column;
   gap: 5px 10px;
   justify-content: center;
-  width: 100%;
   margin: auto;
+}
+
+input {
+  font-family: "Poppins", sans-serif;
 }
 
 .footerContainer {
@@ -83,7 +84,7 @@ th {
 }
 
 @media screen and (max-width: 800px) {
-  .mainContainer {
+  body {
     width: 90%;
     font-size: small;
   }
