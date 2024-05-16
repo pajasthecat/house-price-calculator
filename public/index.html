@@ -73,6 +73,9 @@
         <label for="income">Hushållets månatliga bruttoinkomst</label>
         <input type="text" name="income" id="income" />
 
+        <label for="kvm">Kvadratmeter</label>
+        <input type="text" name="kvm" id="kvm" />
+
         <label for="interets">Ränta</label>
         <select id="interets" name="interets">
           <option value="1">1 %</option>
@@ -127,24 +130,32 @@
     <table>
       <tr>
         <th>Amortering</th>
-        <td id="amortizationPerMonth">0 kr</td>
+        <td id="amortizationPerMonth">0 SEK</td>
       </tr>
       <tr>
         <th>Räntebetalning</th>
-        <td id="interestPerMonth">0 kr</td>
+        <td id="interestPerMonth">0 SEK</td>
       </tr>
       <tr>
         <th>Hyra</th>
-        <td id="rentPerMonth">0 kr</td>
+        <td id="rentPerMonth">0 SEK</td>
+      </tr>
+      <tr>
+        <th>Underhållskostnad</th>
+        <td id="maintenancePerMonth">0 SEK</td>
       </tr>
       <tr>
         <th><b>Total månadskostnad</b></th>
-        <td id="totalPerMonth"><b>0 kr</b></td>
+        <td id="totalPerMonth"><b>0 SEK</b></td>
       </tr>
       <tr>
         <th><b>Total månadskostnad ex ränteavdrag</b></th>
-        <td id="totalPerMonthExDeduction"><b>0 kr</b></td>
+        <td id="totalPerMonthExDeduction"><b>0 SEK</b></td>
       </tr>
+    </table>
+
+    <h2>Övriga nyckeltal</h2>
+    <table>
       <tr>
         <th>Kostnad som andel av nettoinkomst</th>
         <td id="costAsShareOfIncome">0%</td>
@@ -152,6 +163,10 @@
       <tr>
         <th>Räntekostnad som andel av inkomst</th>
         <td id="interestAsShareOfIncome">0%</td>
+      </tr>
+      <tr>
+        <th>Kvadratmeterpris</th>
+        <td id="kvmPrice">0 SEK/kvm</td>
       </tr>
     </table>
     <footer>
