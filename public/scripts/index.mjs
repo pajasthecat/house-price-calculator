@@ -86,11 +86,11 @@ const getOutput = (input) => {
 
   const costAsShareOfIncome = round((totalPerMonth / (income * 0.7)) * 100);
 
-  const interestAsShareOfIncome = round(
-    ((interestPerMonth * 0.7) / income) * 100
-  );
+  const interestAsShareOfIncome = round((interestPerMonth / income) * 100);
 
   const kvmPrice = price / kvm;
+
+  const loanToValueRatio = (borrowedSum / price) * 100;
 
   return {
     paidDownPayment,
@@ -106,6 +106,7 @@ const getOutput = (input) => {
     interestAsShareOfIncome,
     maintenance,
     kvmPrice,
+    loanToValueRatio,
   };
 };
 
@@ -117,6 +118,7 @@ const setLoanTable = (output) => {
     loanAsQuotaOfYearlyIncome,
     amortizationPerYear,
     paidDownPayment,
+    loanToValueRatio,
   } = output;
 
   document.getElementById(
@@ -128,14 +130,16 @@ const setLoanTable = (output) => {
   )} SEK`;
 
   document.getElementById("loanAsQuotaOfYearlyIncome").innerHTML =
-    ifMissingLine(
-      loanAsQuotaOfYearlyIncome,
-      `${loanAsQuotaOfYearlyIncome} gånger hushållets årsinkomst`
-    );
+    ifMissingLine(loanAsQuotaOfYearlyIncome, `${loanAsQuotaOfYearlyIncome}`);
 
   document.getElementById(
     "amortizationPerYear"
   ).innerHTML = `${formatAndRoundCurrency(amortizationPerYear)} %`;
+
+  document.getElementById("loanToValueRatio").innerHTML = ifMissingLine(
+    loanToValueRatio,
+    `${round(loanToValueRatio)} %`
+  );
 };
 
 const setCostTable = (output) => {
