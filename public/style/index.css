@@ -32,6 +32,10 @@ th {
   font-size: small;
 }
 
+td {
+  text-align: center;
+}
+
 .inputContainer {
   display: flex;
   flex-direction: column;
