@@ -30,6 +30,8 @@ document.getElementById("form").addEventListener("submit", (event) => {
   setLoanTable(output);
 
   setCostTable(output);
+
+  setMiscTable(output);
 });
 
 const getInput = () => {
@@ -39,6 +41,7 @@ const getInput = () => {
   const interest = document.getElementById("interets").value;
   const downPayment = document.getElementById("downPayment").value;
   const maintenance = document.getElementById("maintenance").value;
+  const kvm = document.getElementById("kvm").value;
 
   return {
     price: parseAndSetDefault(price),
@@ -47,80 +50,13 @@ const getInput = () => {
     interest: parseAndSetDefault(interest),
     downPayment: parseAndSetDefault(downPayment),
     maintenance: parseAndSetDefault(maintenance),
+    kvm: parseAndSetDefault(kvm),
   };
 };
 
-const parseAndSetDefault = (text) => (text ? parseIntFromCurrency(text) : 0);
-
-const setLoanTable = (output) => {
-  const {
-    borrowedSum,
-    loanAsQuotaOfYearlyIncome,
-    amortizationPerYear,
-    paidDownPayment,
-  } = output;
-
-  document.getElementById(
-    "paidDownPayment"
-  ).innerHTML = `${formatAndRoundCurrency(paidDownPayment)} SEK`;
-
-  document.getElementById("borrowedSum").innerHTML = `${formatAndRoundCurrency(
-    borrowedSum
-  )} SEK`;
-
-  document.getElementById(
-    "loanAsQuotaOfYearlyIncome"
-  ).innerHTML = `${loanAsQuotaOfYearlyIncome} gånger hushållets årsinkomst`;
-
-  document.getElementById(
-    "amortizationPerYear"
-  ).innerHTML = `${formatAndRoundCurrency(amortizationPerYear)} %`;
-};
-
-const setCostTable = (output) => {
-  const {
-    amortizationPerMonth,
-    interestPerMonth,
-    rent,
-    totalPerMonth,
-    totalPerMonthExDeduction,
-    costAsShareOfIncome,
-    interestAsShareOfIncome,
-  } = output;
-
-  document.getElementById(
-    "amortizationPerMonth"
-  ).innerHTML = `${formatAndRoundCurrency(amortizationPerMonth)} SEK`;
-
-  document.getElementById(
-    "interestPerMonth"
-  ).innerHTML = `${formatAndRoundCurrency(interestPerMonth)} SEK`;
-
-  document.getElementById("rentPerMonth").innerHTML = `${formatAndRoundCurrency(
-    rent
-  )} SEK`;
-
-  document.getElementById(
-    "totalPerMonth"
-  ).innerHTML = `<b> ${formatAndRoundCurrency(totalPerMonth)} SEK </b>`;
-
-  document.getElementById(
-    "totalPerMonthExDeduction"
-  ).innerHTML = ` <b>${formatAndRoundCurrency(
-    totalPerMonthExDeduction
-  )} SEK </b>`;
-
-  document.getElementById(
-    "costAsShareOfIncome"
-  ).innerHTML = `${costAsShareOfIncome}%`;
-
-  document.getElementById(
-    "interestAsShareOfIncome"
-  ).innerHTML = `${interestAsShareOfIncome}%`;
-};
-
 const getOutput = (input) => {
-  const { price, downPayment, income, interest, rent, maintenance } = input;
+  const { price, downPayment, income, interest, rent, maintenance, kvm } =
+    input;
   const paidDownPayment = (downPayment / 100) * price;
 
   const borrowedSum = price - paidDownPayment;
@@ -154,6 +90,8 @@ const getOutput = (input) => {
     ((interestPerMonth * 0.7) / income) * 100
   );
 
+  const kvmPrice = price / kvm;
+
   return {
     paidDownPayment,
     borrowedSum,
@@ -166,7 +104,94 @@ const getOutput = (input) => {
     totalPerMonthExDeduction,
     costAsShareOfIncome,
     interestAsShareOfIncome,
+    maintenance,
+    kvmPrice,
   };
+};
+
+const parseAndSetDefault = (text) => (text ? parseIntFromCurrency(text) : 0);
+
+const setLoanTable = (output) => {
+  const {
+    borrowedSum,
+    loanAsQuotaOfYearlyIncome,
+    amortizationPerYear,
+    paidDownPayment,
+  } = output;
+
+  document.getElementById(
+    "paidDownPayment"
+  ).innerHTML = `${formatAndRoundCurrency(paidDownPayment)} SEK`;
+
+  document.getElementById("borrowedSum").innerHTML = `${formatAndRoundCurrency(
+    borrowedSum
+  )} SEK`;
+
+  document.getElementById("loanAsQuotaOfYearlyIncome").innerHTML =
+    ifMissingLine(
+      loanAsQuotaOfYearlyIncome,
+      `${loanAsQuotaOfYearlyIncome} gånger hushållets årsinkomst`
+    );
+
+  document.getElementById(
+    "amortizationPerYear"
+  ).innerHTML = `${formatAndRoundCurrency(amortizationPerYear)} %`;
+};
+
+const setCostTable = (output) => {
+  const {
+    amortizationPerMonth,
+    interestPerMonth,
+    rent,
+    totalPerMonth,
+    totalPerMonthExDeduction,
+    maintenance,
+  } = output;
+
+  document.getElementById(
+    "amortizationPerMonth"
+  ).innerHTML = `${formatAndRoundCurrency(amortizationPerMonth)} SEK`;
+
+  document.getElementById(
+    "interestPerMonth"
+  ).innerHTML = `${formatAndRoundCurrency(interestPerMonth)} SEK`;
+
+  document.getElementById("rentPerMonth").innerHTML = `${formatAndRoundCurrency(
+    rent
+  )} SEK`;
+
+  document.getElementById(
+    "maintenancePerMonth"
+  ).innerHTML = `${formatAndRoundCurrency(maintenance)} SEK`;
+
+  document.getElementById(
+    "totalPerMonth"
+  ).innerHTML = `<b> ${formatAndRoundCurrency(totalPerMonth)} SEK </b>`;
+
+  document.getElementById(
+    "totalPerMonthExDeduction"
+  ).innerHTML = ` <b>${formatAndRoundCurrency(
+    totalPerMonthExDeduction
+  )} SEK </b>`;
+};
+
+const setMiscTable = (output) => {
+  const { costAsShareOfIncome, interestAsShareOfIncome, kvmPrice } = output;
+
+  document.getElementById("costAsShareOfIncome").innerHTML = ifMissingLine(
+    costAsShareOfIncome,
+    `${costAsShareOfIncome}%`
+  );
+
+  document.getElementById("interestAsShareOfIncome").innerHTML = ifMissingLine(
+    interestAsShareOfIncome,
+    `${interestAsShareOfIncome}%`
+  );
+
+  document.getElementById("kvmPrice").innerHTML = ifMissingLine(
+    kvmPrice,
+    `${formatAndRoundCurrency(kvmPrice)} SEK/kvm`
+  );
 };
 
 const getAmortizationPerMonth = (borrowedSum, amortizationPerYear) =>
@@ -208,3 +233,5 @@ const formatAndRoundCurrency = (price) => {
 };
 
 const parseIntFromCurrency = (price) => Number(price.replace(/[^0-9\.]+/g, ""));
+
+const ifMissingLine = (value, text) => (isFinite(value) ? text : "-");
