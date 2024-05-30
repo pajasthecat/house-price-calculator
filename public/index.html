@@ -48,58 +48,56 @@
   <body>
     <h1>Bo Räknare &#128116;</h1>
 
-    <div class="upperContainer">
-      <p>
-        Välkommen till Bo Räknare &#128116; – din bästa vän vid bostadsköp!
-        Beräkna enkelt och snabbt nyckeltal som pris per kvadratmeter,
-        belåningsgrad och månadskostnad.
-      </p>
+    <p>
+      Välkommen till Bo Räknare &#128116; – din bästa vän vid bostadsköp!
+      Beräkna enkelt och snabbt nyckeltal som pris per kvadratmeter,
+      belåningsgrad och månadskostnad.
+    </p>
 
-      <p>
-        Få insikter om din ekonomiska styrka och hur du kan optimera ditt köp
-        genom att fylla i formuläret neda. Ingen data sparas. Vänligen uppge
-        allt i SEK.
-      </p>
-      <form id="form">
-        <div class="inputContainer">
-          <label for="price">Bostadspris</label>
-          <input type="text" name="price" id="price" />
+    <p>
+      Få insikter om din ekonomiska styrka och hur du kan optimera ditt köp
+      genom att fylla i formuläret neda. Ingen data sparas. Vänligen uppge allt
+      i SEK.
+    </p>
+    <form id="form">
+      <div class="inputContainer">
+        <label for="price">Bostadspris</label>
+        <input type="text" name="price" id="price" />
 
-          <label for="rent">Hyra</label>
-          <input type="text" name="rent" id="rent" />
+        <label for="rent">Hyra</label>
+        <input type="text" name="rent" id="rent" />
 
-          <label for="maintenance">Underhållskostnad</label>
-          <input type="text" name="maintenance" id="maintenance" />
+        <label for="maintenance">Underhållskostnad</label>
+        <input type="text" name="maintenance" id="maintenance" />
 
-          <label for="income">Hushållets månatliga bruttoinkomst</label>
-          <input type="text" name="income" id="income" />
+        <label for="income">Hushållets månatliga bruttoinkomst</label>
+        <input type="text" name="income" id="income" />
 
-          <label for="kvm">Antal kvadratmeter</label>
-          <input type="text" name="kvm" id="kvm" />
+        <label for="kvm">Antal kvadratmeter</label>
+        <input type="text" name="kvm" id="kvm" />
 
-          <div id="sliderItem">
-            <label for="interets">Ränta</label> <span id="interestValue"></span>
-          </div>
-          <input
-            type="range"
-            min="1"
-            max="10"
-            step="0.1"
-            value="4.5"
-            id="interets"
-          />
-
-          <div id="sliderItem">
-            <label for="downPayment">Handpenning</label>
-            <span id="downPaymentValue"></span>
-          </div>
-          <input type="range" min="15" max="100" value="15" id="downPayment" />
-
-          <br />
-          <input type="submit" class="button" value="Räkna ut" />
+        <div id="sliderItem">
+          <label for="interets">Ränta</label> <span id="interestValue"></span>
         </div>
-      </form>
-    </div>
+        <input
+          type="range"
+          min="1"
+          max="10"
+          step="0.1"
+          value="4.5"
+          id="interets"
+        />
+
+        <div id="sliderItem">
+          <label for="downPayment">Handpenning</label>
+          <span id="downPaymentValue"></span>
+        </div>
+        <input type="range" min="15" max="100" value="15" id="downPayment" />
+
+        <br />
+        <input type="submit" class="button" value="Räkna ut" />
+      </div>
+    </form>
     <h2 id="elementToScroll">Lån</h2>
     <table>
       <tr>
