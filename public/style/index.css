@@ -1,9 +1,6 @@
 body {
   font-family: "Poppins", sans-serif;
   font-size: 14px;
-  margin-left: auto;
-  margin-right: auto;
-  width: 30%;
 }
 
 p {
@@ -20,8 +17,14 @@ h2 {
 
 table {
   text-align: left;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+}
+
+.upperContainer {
   margin: auto;
-  width: 100%;
+  width: 40%;
 }
 
 td,
@@ -93,7 +96,11 @@ input {
 }
 
 @media screen and (max-width: 800px) {
-  body {
+  table,
+  footer,
+  th,
+  td,
+  .main-div {
     width: 90%;
     font-size: small;
   }
