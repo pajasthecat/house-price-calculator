@@ -32,6 +32,9 @@ document.getElementById("form").addEventListener("submit", (event) => {
   setCostTable(output);
 
   setMiscTable(output);
+
+  const elementToZoomInto = document.getElementById("elementToScroll");
+  elementToZoomInto.scrollIntoView();
 });
 
 const getInput = () => {
