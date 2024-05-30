@@ -39,9 +39,7 @@ td {
 .inputContainer {
   display: flex;
   flex-direction: column;
-  gap: 5px 10px;
-  justify-content: center;
-  margin: auto;
+  gap: 1px;
 }
 
 input {
