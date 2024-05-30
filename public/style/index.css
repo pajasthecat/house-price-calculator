@@ -3,7 +3,7 @@ body {
   font-size: 14px;
   margin-left: auto;
   margin-right: auto;
-  width: 30%;
+  width: 40%;
 }
 
 p {
@@ -95,6 +95,5 @@ input {
 @media screen and (max-width: 800px) {
   body {
     width: 90%;
-    font-size: small;
   }
 }
