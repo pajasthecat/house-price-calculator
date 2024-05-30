@@ -40,7 +40,8 @@ td {
 .inputContainer {
   display: flex;
   flex-direction: column;
-  gap: 1px;
+  gap: 5px;
+  font-size: 15px;
 }
 
 input {
