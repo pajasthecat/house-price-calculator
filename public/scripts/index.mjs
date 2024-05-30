@@ -20,6 +20,22 @@ document
   .getElementById("income")
   .addEventListener("focusout", formatInput.bind(null, "income"));
 
+var interestSlider = document.getElementById("interets");
+var interestValue = document.getElementById("interestValue");
+interestValue.innerHTML = `${interestSlider.value} %`;
+
+interestSlider.oninput = () => {
+  interestValue.innerHTML = `${interestSlider.value} %`;
+};
+
+var downPaymentSlider = document.getElementById("downPayment");
+var downPaymentValue = document.getElementById("downPaymentValue");
+downPaymentValue.innerHTML = `${downPaymentSlider.value} %`;
+
+downPaymentSlider.oninput = () => {
+  downPaymentValue.innerHTML = `${downPaymentSlider.value} %`;
+};
+
 document.getElementById("form").addEventListener("submit", (event) => {
   event.preventDefault();
 

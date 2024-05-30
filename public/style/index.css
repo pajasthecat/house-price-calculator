@@ -1,7 +1,8 @@
 body {
   font-family: "Poppins", sans-serif;
   font-size: 14px;
-  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
   width: 30%;
 }
 
@@ -44,6 +45,11 @@ td {
 
 input {
   font-family: "Poppins", sans-serif;
+}
+
+.sliderItem {
+  display: flex;
+  flex-direction: row;
 }
 
 .footerContainer {

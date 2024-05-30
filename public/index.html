@@ -76,31 +76,23 @@
         <label for="kvm">Antal kvadratmeter</label>
         <input type="text" name="kvm" id="kvm" />
 
-        <label for="interets">Ränta</label>
-        <select id="interets" name="interets">
-          <option value="1">1 %</option>
-          <option value="2">2 %</option>
-          <option value="3">3 %</option>
-          <option value="4">4 %</option>
-          <option value="5">5 %</option>
-          <option value="6">6 %</option>
-          <option value="7">7 %</option>
-          <option value="8">8 %</option>
-          <option value="9">9 %</option>
-          <option value="10">10 %</option>
-        </select>
+        <div id="sliderItem">
+          <label for="interets">Ränta</label> <span id="interestValue"></span>
+        </div>
+        <input
+          type="range"
+          min="1"
+          max="10"
+          step="0.1"
+          value="4.5"
+          id="interets"
+        />
 
-        <label for="downPayment">Handpenning</label>
-        <select id="downPayment" name="downPayment">
-          <option value="15">15 %</option>
-          <option value="20">20 %</option>
-          <option value="25">25 %</option>
-          <option value="30">30 %</option>
-          <option value="35">35 %</option>
-          <option value="40">40 %</option>
-          <option value="45">45 %</option>
-          <option value="50">50 %</option>
-        </select>
+        <div id="sliderItem">
+          <label for="downPayment">Handpenning</label>
+          <span id="downPaymentValue"></span>
+        </div>
+        <input type="range" min="15" max="100" value="15" id="downPayment" />
 
         <br />
         <input type="submit" class="button" value="Räkna ut" />
