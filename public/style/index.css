@@ -1,6 +1,6 @@
 body {
   font-family: "Poppins", sans-serif;
-  font-size: 16px;
+  font-size: 14px;
   margin-left: auto;
   margin-right: auto;
   width: 40%;
@@ -45,6 +45,7 @@ td {
 
 input {
   font-family: "Poppins", sans-serif;
+  font-size: 14px;
 }
 
 .sliderItem {
